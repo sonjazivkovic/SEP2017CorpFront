@@ -1,0 +1,55 @@
+<form [formGroup]="inventarStavkiForm" (ngSubmit)="onSubmit()" #formInventarStavki="ngForm" class="form-block">
+  <h2 class="title-margin">Unesite nove stavke inventara:</h2>
+  <button pButton type="button" class="title-margin" (click)="dodajSport()"  label="Novi sport"></button>
+  <div formArrayName="Sport">
+    <div *ngFor="let noviSport of inventarStavkiForm.controls.Sport.controls; let i = index" [formGroupName]="i" class="form-group">
+      <div class="title-margin">
+        <span>{{i + 1}}.</span>
+        <span class="close-icon" (click)="obrisiNoviSportInput(i)">clear</span>
+      </div>
+       <span class="ui-float-label form-item-margin">
+         <input id="input-sport-naziv" type="text" size="30"  formControlName="naziv" pInputText required>
+         <label for="input-sport-naziv">Naziv sporta</label>
+       </span>
+      <span class="ui-float-label form-item-margin">
+        <input id="input-sport-cena" type="number" size="30" formControlName="cena" pInputText required>
+        <label for="input-sport-cena">Cena</label>
+      </span>
+    </div>
+  </div>
+  <button pButton type="button" class="title-margin"  (click)="dodajStarosnuGrupu()" label="Nova starosna grupa"></button>
+  <div formArrayName="StarosnoDoba">
+    <div *ngFor="let novoStarosnoDoba of inventarStavkiForm.controls.StarosnoDoba.controls; let i = index" [formGroupName]="i" class="form-group">
+      <div class="title-margin">
+        <span>{{i + 1}}.</span>
+        <span class="close-icon" (click)="obrisiStarosnuGrupuInput(i)">clear</span>
+      </div>
+       <span class="ui-float-label form-item-margin">
+         <input id="input-starosna-grupa" type="text" size="30"  formControlName="naziv" pInputText required>
+         <label for="input-starosna-grupa">Naziv</label>
+       </span>
+      <span class="ui-float-label form-item-margin">
+        <input id="input-starosna-grupa-cena" type="number" size="30" formControlName="cena" pInputText required>
+        <label for="input-starosna-grupa-cena">Cena</label>
+      </span>
+    </div>
+  </div>
+  <button pButton type="button" class="title-margin" (click)="dodajPomocNaPutu()" label="Nova pomoc na putu"></button>
+  <div formArrayName="PomocNaPutu">
+    <div *ngFor="let pomocNaPutu of inventarStavkiForm.controls.PomocNaPutu.controls; let i = index" [formGroupName]="i" class="form-group">
+      <div class="title-margin">
+        <span>{{i + 1}}.</span>
+        <span class="close-icon" (click)="obrisiPomocNaPutuInput(i)">clear</span>
+      </div>
+         <span class="ui-float-label form-item-margin">
+         <input id="input-pomoc-na-putu" type="text" size="30"  formControlName="naziv" pInputText required>
+         <label for="input-pomoc-na-putu">Naziv</label>
+       </span>
+      <span class="ui-float-label form-item-margin">
+        <input id="input-pomoc-na-putu-cena" type="number" size="30" formControlName="cena" pInputText required>
+        <label for="input-pomoc-na-putu-cena">Cena</label>
+      </span>
+    </div>
+  </div>
+  <button pButton type="submit" [disabled]="!formInventarStavki.valid"  class="button-izmeni" label="Nastavi"></button>
+</form>

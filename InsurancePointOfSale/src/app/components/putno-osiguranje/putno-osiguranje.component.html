@@ -1,0 +1,37 @@
+<form #putnoOsiguranjeForm="ngForm" class="form-block" id="putno-osiguranje">
+  <h3 class="first title-margin">Podaci o osiguranju na putu</h3>
+  <p>Trajanje osiguranja</p>
+  <p-spinner class="form-item-margin" size="5"  [(ngModel)]="trajanje" name="trajanje"></p-spinner>
+  <p-autoComplete class="form-item-margin" [(ngModel)]="region"  name="region" [suggestions]="filteredRegions" (completeMethod)="filterRegions($event)" [size]="20"
+                  [minLength]="1" placeholder="Odaberite regiju" [dropdown]="true" required>
+    <ng-template let-region pTemplate="item">
+      <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
+        <div style="font-size:18px;float:right;margin:10px 10px 0 0">{{region}}</div>
+      </div>
+    </ng-template>
+  </p-autoComplete>
+  <p>Broj osoba</p>
+  <p-spinner class="form-item-margin" size="5" [(ngModel)]="brojOsoba"  name="brojOsoba"  required></p-spinner>
+  <p>Starost osoba</p>
+  <p-selectButton class="form-item-margin" [options]="starost" [(ngModel)]="starostOsoba"  name="starostOsoba" required></p-selectButton>
+  <p-checkbox [(ngModel)]="checkedSport"  name="sportDa" class="choose-sport" binary="true" label="Bavicu se sportom" (click)="showSportList()"></p-checkbox>
+  <p-autoComplete id="sport" class="choose-sport no-display" [(ngModel)]="sport"  name="sport" [suggestions]="filteredSports" (completeMethod)="filterSports($event)" [size]="20"
+                  [minLength]="1" placeholder="Odaberite sport" [dropdown]="true">
+    <ng-template let-sport pTemplate="item">
+      <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
+        <div style="font-size:18px;float:right;margin:10px 10px 0 0">{{sport}}</div>
+      </div>
+    </ng-template>
+  </p-autoComplete>
+  <p>Do kog iznosa je korisnik osiguran</p>
+  <p-autoComplete id="iznos" class="form-item-margin" [(ngModel)]="iznosDo"  name="iznosDo" [suggestions]="filteredIznos" (completeMethod)="filterIznos($event)" [size]="20"
+                  [minLength]="1" placeholder="Iznos osiguranja" [dropdown]="true" required>
+    <ng-template let-iznos pTemplate="item">
+      <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
+        <div style="font-size:18px;float:right;margin:10px 10px 0 0">{{iznos}}</div>
+      </div>
+    </ng-template>
+  </p-autoComplete>
+  <button pButton type="button" id="continue-button" [disabled]="!putnoOsiguranjeForm.valid" class="continue-button dugmici" (click)="showNextForm()" label="Nastavi"></button>
+
+</form>

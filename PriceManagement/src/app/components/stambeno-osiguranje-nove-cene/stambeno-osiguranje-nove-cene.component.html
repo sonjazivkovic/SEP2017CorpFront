@@ -1,0 +1,44 @@
+<form [formGroup]="stambenoOsifuranjeForm" class="form-block" (ngSubmit)="onSubmit()">
+  <h2 class="title-margin">Stambeno osiguranje</h2>
+  <span>Datum vazenja</span>
+  <p-calendar formControlName="datum" selectionMode="range" readonlyInput="true" class="kalendar"></p-calendar>
+  <div class="form-block-inner">
+    <div formArrayName="Povrsina" class="form-group">
+      <h3>Povrsina stana</h3>
+      <div *ngFor="let povrsina of stambenoOsifuranjeForm.controls.Povrsina.controls; let i = index" [formGroupName]="i">
+        <div class="putno-osiguranje-lista">
+          <span class="title-margin">{{povrsina.value.naziv}}</span>
+          <input type="number" size="5"  formControlName="cena" (change)="promeniBoju($event)" pInputText required> din
+        </div>
+      </div>
+    </div>
+    <div formArrayName="Starost" class="form-group">
+      <h3>Starost stana</h3>
+      <div *ngFor="let starost of stambenoOsifuranjeForm.controls.Starost.controls; let i = index" [formGroupName]="i">
+        <div class="putno-osiguranje-lista">
+          <span class="title-margin">{{starost.value.naziv}}</span>
+          <input type="number" size="5"  formControlName="cena" (change)="promeniBoju($event)" pInputText required> din
+        </div>
+      </div>
+    </div>
+    <div formArrayName="Vrednosti" class="form-group">
+      <h3>Procenjena vrednost stana</h3>
+      <div *ngFor="let vrednost of stambenoOsifuranjeForm.controls.Vrednosti.controls; let i = index" [formGroupName]="i">
+        <div class="putno-osiguranje-lista">
+          <span class="title-margin">{{vrednost.value.naziv}}</span>
+          <input type="number" size="5"  formControlName="cena" (change)="promeniBoju($event)" pInputText required> din
+        </div>
+      </div>
+    </div>
+    <div formArrayName="TipOsiguranja" class="form-group">
+      <h3>Tip osiguranja</h3>
+      <div *ngFor="let tip of stambenoOsifuranjeForm.controls.TipOsiguranja.controls; let i = index" [formGroupName]="i">
+        <div class="putno-osiguranje-lista">
+          <span class="title-margin">{{tip.value.naziv}}</span>
+          <input type="number" size="5"  formControlName="cena" (change)="promeniBoju($event)" pInputText required> din
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" pButton label="Izmeni" class="button-izmeni"></button>
+</form>

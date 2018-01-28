@@ -1,0 +1,18 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid" id="main">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Price management</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a [routerLink]="['/home']">Home</a></li>
+      <li><a [routerLink]="['/inventarStavki']" (click)="toggleClass()">Inventar stavki</a></li>
+      <li><a [routerLink]="['/autoOsiguranjeNoveCene']" (click)="toggleClass()">Auto osiguranje</a></li>
+      <li><a [routerLink]="['/stambenoOsiguranjeNoveCene']" (click)="toggleClass()">Osiguranje kuce/stana</a></li>
+      <li><a [routerLink]="['/putnoOsiguranjeNoveCene']" (click)="toggleClass()">Putno osiguranje</a></li>
+    </ul>
+    <div class="navbar-text pull-right">
+      <a [routerLink]="['/login']" class="logout">Logout</a>
+    </div>
+  </div>
+</nav>
+

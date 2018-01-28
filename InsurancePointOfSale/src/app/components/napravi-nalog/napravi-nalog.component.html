@@ -1,0 +1,20 @@
+<form [formGroup]="napraviNalogForm" class="form-block" (ngSubmit)="onSubmit()">
+  <h2 class="title-margin">Napravite nalog besplatno!</h2>
+  <span class="ui-float-label form-item-margin">
+    <input id="input-email" type="email" size="30"  formControlName="email" pInputText required>
+    <label for="input-email">Email</label>
+  </span>
+  <span class="ui-float-label form-item-margin">
+    <input id="input-korisnicko-ime" type="text" size="30" formControlName="korisnickoIme" pInputText required>
+    <label for="input-korisnicko-ime">Korisnicko ime</label>
+  </span>
+  <span class="ui-float-label form-item-margin">
+    <input id="input-lozinka" type="text" size="30"  formControlName="lozinka" pInputText required>
+    <label for="input-lozinka">Lozinka</label>
+  </span>
+  <span class="ui-float-label form-item-margin">
+    <input id="input-ponovo-lozinka" type="text" size="30" formControlName="ponovoLozinka" pInputText required>
+    <label for="input-ponovo-lozinka">Ponovo lozinka</label>
+  </span>
+  <button pButton type="submit" [disabled]="!napraviNalogForm.valid"  class="button-izmeni" label="Prijavi se"></button>
+</form>

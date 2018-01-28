@@ -1,0 +1,107 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+  background-color: #CEDFCE;
+}
+#main {
+  width:100% !important;
+}
+.container {
+  padding: 15px;
+}
+.something {
+  background-color: red;
+}
+.form-item-margin {
+  margin-bottom: 2em;
+  display: block;
+}
+.choose-sport {
+  margin-bottom: 2em;
+  display: inline-block;
+  margin-right: 2em;
+}
+.title-margin {
+  margin-bottom: 1em;
+}
+.navbar-green {
+  background-color: #035F50;
+}
+.dugmici {
+  padding: 1em !important;
+  text-transform: uppercase;
+  background-color: #035F50 !important;
+  color: #9d9d9d !important;
+  border: none !important;
+}
+.dugmici:enabled:active {
+  color: white !important;
+}
+.dugmici[disabled]:hover {
+ box-shadow: none;
+  color: #9d9d9d !important;
+}
+.dugmici:hover {
+  background-color: #035F50 !important;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  text-align: center;
+  color: white !important;
+}
+
+.ui-state-active {
+  background-color: #CEDFCE !important;
+}
+.form-block {
+  display: block;
+  width: 100%;
+  padding:2em;
+  border: 1px solid lightgray;
+  background-color: #BDCFBD;
+
+}
+.button-login {
+  display: inline-block !important;
+  margin-right: 2em;
+}
+.form-block-inner {
+  display: flex;
+  position: relative;
+  vertical-align: top;
+  width:100%;
+  margin-top: 2em;
+}
+#finish-button {
+  margin-top: 2em;
+}
+.formaKorisnik {
+  display: inline-block;
+  margin-right: 2em;
+  vertical-align: top;
+}
+.no-display {
+  display: none !important;
+}
+#help-type .ui-button {
+  display: block !important;
+}
+#vlasnik-stana-vozila-block, #vozilo-block, #auto-osiguranje-info-block,  #home-info-block {
+  display: inline-block;
+}
+#vlasnik-stana-vozila-block {
+  margin-left: 3em;
+}
+#vozilo-block, #home-info-block {
+  margin: 0 2em;
+}
+#auto-osiguranje-info-block {
+  margin-right: 3em;
+}
+.continue-button {
+  position: relative;
+  width: 20em;
+}
+@media (min-width: 69.5em) {
+  #main {
+    width:85em !important;
+    margin:auto;
+  }
+}

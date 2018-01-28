@@ -1,0 +1,14 @@
+<div class="form-block no-display" id="auto-osiguranje">
+  <h3 class="first title-margin">Pomoc na putu</h3>
+  <div class="form-block-inner">
+    <div id="auto-osiguranje-info-block">
+      <h4>Podaci o osiguranju</h4>
+      <p>Trajanje osiguranja</p>
+      <p-spinner class="form-item-margin" size="5" [(ngModel)]="trajanje"></p-spinner>
+      <p style="display: inline-block;">Tip pomoci</p>
+      <p-selectButton id="help-type" class="form-item-margin" [options]="paket" [(ngModel)]="izabranPaket"></p-selectButton>
+    </div>
+    <app-vozilo></app-vozilo>
+    <app-vlasnik-stana-vozila [prikaziAdresu]="false"></app-vlasnik-stana-vozila>
+  </div>
+</div>

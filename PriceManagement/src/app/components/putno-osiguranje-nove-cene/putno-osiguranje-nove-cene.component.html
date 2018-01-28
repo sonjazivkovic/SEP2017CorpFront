@@ -1,0 +1,44 @@
+<form [formGroup]="putnoOsiguranjeForm" class="form-block" (ngSubmit)="onSubmit()">
+  <h2 class="title-margin">Putno osiguranje</h2>
+  <span>Datum vazenja</span>
+  <p-calendar formControlName="datum" selectionMode="range" readonlyInput="true" class="kalendar"></p-calendar>
+    <div class="form-block-inner">
+  <div formArrayName="Region" class="form-group">
+    <h3>Region</h3>
+    <div *ngFor="let region of putnoOsiguranjeForm.controls.Region.controls; let i = index" [formGroupName]="i">
+      <div class="putno-osiguranje-lista">
+        <span class="title-margin">{{region.value.naziv}}</span>
+        <input type="number" size="5"  formControlName="cena" (change)="promeniBoju($event)" pInputText required> din
+      </div>
+    </div>
+  </div>
+  <div formArrayName="Starost" class="form-group">
+    <h3>Starost osoba</h3>
+    <div *ngFor="let starost of putnoOsiguranjeForm.controls.Starost.controls; let i = index" [formGroupName]="i">
+      <div class="putno-osiguranje-lista">
+        <span class="title-margin">{{starost.value.naziv}}</span>
+        <input type="number" size="5"  formControlName="cena" (change)="promeniBoju($event)" pInputText required> din
+      </div>
+    </div>
+  </div>
+  <div formArrayName="Sport" class="form-group">
+    <h3>Sportovi</h3>
+    <div *ngFor="let sport of putnoOsiguranjeForm.controls.Sport.controls; let i = index" [formGroupName]="i">
+      <div class="putno-osiguranje-lista">
+        <span class="title-margin">{{sport.value.naziv}}</span>
+        <input type="number" size="5"  formControlName="cena" (change)="promeniBoju($event)" pInputText required> din
+      </div>
+    </div>
+  </div>
+  <div formArrayName="Iznos" class="form-group">
+    <h3>Iznosi</h3>
+    <div *ngFor="let iznos of putnoOsiguranjeForm.controls.Iznos.controls; let i = index" [formGroupName]="i">
+      <div class="putno-osiguranje-lista">
+        <span class="title-margin">{{iznos.value.naziv}}</span>
+        <input type="number" size="5"  formControlName="cena" (change)="promeniBoju($event)" pInputText required> din
+      </div>
+    </div>
+  </div>
+</div>
+  <button type="submit" pButton label="Izmeni" class="button-izmeni"></button>
+</form>

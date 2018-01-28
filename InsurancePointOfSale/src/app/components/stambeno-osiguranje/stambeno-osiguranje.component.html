@@ -1,0 +1,14 @@
+<div class="form-block no-display" id="stambeno-osiguranje">
+  <h3 class="first title-margin">Osiguranje kuce/stana</h3>
+  <div class="form-block-inner">
+    <div id="auto-osiguranje-info-block">
+      <h4>Podaci o osiguranju</h4>
+      <p>Trajanje osiguranja</p>
+      <p-spinner class="form-item-margin" size="5" [(ngModel)]="numberOfDays"></p-spinner>
+      <p>Tip osiguranja</p>
+      <p-selectButton class="form-item-margin" [options]="type" [(ngModel)]="selectedType"></p-selectButton>
+    </div>
+    <app-stan></app-stan>
+    <app-vlasnik-stana-vozila [prikaziAdresu]="true"></app-vlasnik-stana-vozila>
+  </div>
+</div>

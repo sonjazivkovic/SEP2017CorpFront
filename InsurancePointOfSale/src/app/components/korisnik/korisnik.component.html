@@ -1,0 +1,44 @@
+<div class="form-block no-display" id="korisnik">
+  <h3 class="title-margin">Podaci o korisniku:</h3>
+  <form [formGroup]="korisnikFormGroup" #korisnikForm="ngForm" ngNativeValidate >
+    <div formArrayName="KorisnikInfo">
+      <div *ngFor="let korisnikForma of korisnikFormGroup.controls.KorisnikInfo.controls; let i = index" [formGroupName]="i" class="formaKorisnik">
+        <fieldset>
+
+          <h4>Korisnik broj {{i + 1}}</h4>
+          <span class="ui-float-label form-item-margin">
+              <input id="input-name" type="text" size="30"  formControlName="ime" required pInputText>
+              <label for="input-name">Ime</label>
+            </span>
+          <span class="ui-float-label form-item-margin">
+              <input id="input-surname" type="text" size="30" formControlName="prezime" pInputText required>
+              <label for="input-surname">Prezime</label>
+            </span>
+          <span class="ui-float-label form-item-margin">
+              <input id="input-jmbg" type="text" size="30" formControlName="jmbg" pInputText required>
+              <label for="input-jmbg">JMBG</label>
+            </span>
+          <span class="ui-float-label form-item-margin">
+              <input id="input-passport" type="text" size="30" formControlName="brojPasosa" pInputText required>
+              <label for="input-passport">Broj pasosa</label>
+            </span>
+          <span class="ui-float-label form-item-margin">
+              <input id="input-address" type="text" size="30" formControlName="adresa" pInputText required>
+              <label for="input-address">Adresa</label>
+            </span>
+          <span class="ui-float-label form-item-margin">
+              <input id="input-phone" type="text" size="30" formControlName="brojTelefona" pInputText required>
+              <label for="input-phone">Broj telefona</label>
+            </span>
+            <span class="form-item-margin">
+               <p-checkbox formControlName="nosilacOsiguranja" binary="true" label="Ugovarac osiguranja" (click)="oznaciUgovaracaOsiguranja(i)"></p-checkbox>
+            </span>
+            <span id="form-input-email" class="ui-float-label form-item-margin">
+              <input id="input-email" formControlName="email" type="text" size="30" pInputText>
+              <label for="input-email">Email</label>
+            </span>
+        </fieldset>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,67 @@
+.form-item-margin {
+  margin-bottom: 2em;
+  display: block;
+}
+.form-block {
+  display: block;
+  width: 100%;
+  padding:2em;
+  border: 1px solid lightgray;
+}
+.title-margin {
+  margin-bottom: 1em;
+}
+#main {
+  width:85em !important;
+  margin:auto;
+}
+.container {
+  padding: 15px;
+}
+.close-icon {
+  position: relative;
+  float: right;
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  display: block;
+  font-size: 18px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+.close-icon:hover {
+  cursor: pointer;
+}
+.form-array
+{
+  display: block;
+}
+.form-group {
+  display: inline-block;
+  margin:1em;
+  vertical-align: top;
+}
+.button-login {
+  display: inline-block !important;
+  margin-right: 2em;
+}
+.putno-osiguranje-lista {
+  margin: 1em 2em;
+}
+input[type=number]{
+  width: 60px;
+}
+.kalendar > span > input {
+  width: 13em !important;
+}
+.form-block-inner {
+  display: flex;
+  justify-content: space-between;
+}
+.button-izmeni {
+  display: block;
+  width: 10em;
+}

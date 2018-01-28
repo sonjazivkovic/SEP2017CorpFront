@@ -1,0 +1,13 @@
+<form [formGroup]="loginForm"  (ngSubmit)="onSubmit()" class="form-block">
+  <h2 class="title-margin">Unesite korisnicko ime i lozinku:</h2>
+   <span class="ui-float-label form-item-margin">
+     <input id="input-sport-naziv" type="text" size="30"  formControlName="korisnickoIme" pInputText required>
+     <label for="input-sport-naziv">Korisnicko ime</label>
+   </span>
+  <span class="ui-float-label form-item-margin">
+    <input id="input-sport-cena" type="text" size="30" formControlName="lozinka" pInputText required>
+    <label for="input-sport-cena">Lozinka</label>
+  </span>
+  <button pButton type="submit" [disabled]="!loginForm.valid" class="button-izmeni button-login" label="Uloguj se"></button>
+
+</form>

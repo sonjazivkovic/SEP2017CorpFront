@@ -1,0 +1,18 @@
+<form [formGroup]="autoOsiguranjeForm" (ngSubmit)="onSubmit()" class="form-block">
+  <h2 class="title-margin">Auto osiguranje</h2>
+  <span>Datum vazenja</span>
+  <p-calendar formControlName="datum" selectionMode="range" readonlyInput="true" class="kalendar"></p-calendar>
+  <div class="form-block-inner">
+  <div formArrayName="Paket" class="form-group">
+    <h3>Ponudjeni paketi osiguranja</h3>
+    <div *ngFor="let paket of autoOsiguranjeForm.controls.Paket.controls; let i = index" [formGroupName]="i">
+      <div class="putno-osiguranje-lista">
+        <span class="title-margin">{{paket.value.naziv}}</span>
+        <input type="number" size="5"  formControlName="cena" (change)="promeniBoju($event)" pInputText required> din
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <button type="submit" pButton label="Izmeni" class="button-izmeni"></button>
+</form>

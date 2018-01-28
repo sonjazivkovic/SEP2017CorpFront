@@ -1,0 +1,15 @@
+<app-putno-osiguranje (posaljiBrojFormiKorisnika)="prikaziBrojFormiKorisnika($event)" ></app-putno-osiguranje>
+<button pButton type="button" class="continue-button no-display dugmici" id="show-insurance-details" (click)="showInsuranceDetails()" label="Prikaži detalje o osiguranju"></button>
+<br/><br/>
+<span class="form-item-margin">
+    <p-checkbox [(ngModel)]="prikaziStambenoOsiguranje" name="prikaziStambenoOsiguranje" binary="true" label="Želim osiguranje na putu" (click)="showHomeInsuranceForm()"></p-checkbox>
+  </span>
+<span class="form-item-margin">
+    <p-checkbox [(ngModel)]="prikaziAutoOsiguranje" name="prikaziAutoOsiguranje" binary="true" label="Želim osiguranje kuće/stana" (click)="showRoadSafetyForm()"></p-checkbox>
+  </span>
+<app-auto-osiguranje></app-auto-osiguranje>
+<app-stambeno-osiguranje></app-stambeno-osiguranje>
+<app-korisnik #korisnikKomponenta></app-korisnik>
+
+
+<button pButton type="button" id="finish-button" class="continue-button form-block dugmici"  (click)="kupiOsiguranje()" label="Plati"></button>

@@ -1,0 +1,19 @@
+<div id="vlasnik-stana-vozila-block">
+  <h4>Podaci o vlasniku</h4>
+  <span class="ui-float-label form-item-margin">
+      <input id="input-name" type="text" size="30" pInputText>
+      <label for="input-name">Ime</label>
+    </span>
+  <span class="ui-float-label form-item-margin">
+      <input id="input-surname" type="text" size="30" pInputText>
+      <label for="input-surname">Prezime</label>
+    </span>
+  <span class="ui-float-label form-item-margin">
+      <input id="input-jmbg" type="text" size="30" pInputText>
+      <label for="input-jmbg">JMBG</label>
+    </span>
+  <span *ngIf="prikaziAdresu" class="ui-float-label form-item-margin">
+      <input id="input-address" type="text" size="30" pInputText>
+      <label for="input-address">Adresa</label>
+    </span>
+</div>

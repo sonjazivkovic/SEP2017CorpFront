@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {OsiguranjeService} from "../../services/osiguranje.service";
+import {StavkaOsiguranja} from "../../interfaces/StavkaOsiguranja";
 
 @Component({
   selector: 'app-putno-osiguranje-nove-cene',
@@ -8,11 +10,13 @@ import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
 })
 export class PutnoOsiguranjeNoveCeneComponent implements OnInit {
 
-  putnoOsiguranjeForm: FormGroup;
+  public putnoOsiguranjeForm: FormGroup;
+  data: any = [];
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private osiguranjeService: OsiguranjeService) { }
 
   ngOnInit() {
+    this.getAllStavka();
     this.putnoOsiguranjeForm = new FormGroup({
       Region: this.formBuilder.array([]),
       Starost: this.formBuilder.array([]),
@@ -20,91 +24,53 @@ export class PutnoOsiguranjeNoveCeneComponent implements OnInit {
       Iznos: this.formBuilder.array([]),
       'datum': new FormControl(null)
     });
-    this.ucitajRegione();
-    this.ucitajSportove();
-    this.ucitajStarosti();
-    this.ucitajIznose();
+  }
+
+  getAllStavka() {
+    this.osiguranjeService.getAllStavkaOsiguranjaById('po')
+      .subscribe(response => this.data = response,
+        error => alert(error),
+        () => this.ucitajPovrsinu(this.data));
+  }
+
+  ucitajPovrsinu(nizStavkeOsiguranja: StavkaOsiguranja[]) {
+    const self = this;
+    const controlRegion: FormArray = this.putnoOsiguranjeForm.get('Region') as FormArray;
+    const controlSport: FormArray = this.putnoOsiguranjeForm.get('Sport') as FormArray;
+    const controlStarost: FormArray = this.putnoOsiguranjeForm.get('Starost') as FormArray;
+    const controliznos: FormArray = this.putnoOsiguranjeForm.get('Iznos') as FormArray;
+    nizStavkeOsiguranja.forEach(function (stavka) {
+      if (stavka.naziv === 'region') {
+        stavka.vrednosti.forEach(function (vrednostStavke){
+          controlRegion.push(self.dodajInput(vrednostStavke.vrednost, vrednostStavke.cena, vrednostStavke.id));
+        });
+      } else if (stavka.naziv === 'starost_osoba') {
+        stavka.vrednosti.forEach(function (vrednostStavke) {
+          controlSport.push(self.dodajInput(vrednostStavke.vrednost, vrednostStavke.cena, vrednostStavke.id));
+        });
+      } else if (stavka.naziv === 'sport') {
+        stavka.vrednosti.forEach(function (vrednostStavke) {
+          controlStarost.push(self.dodajInput(vrednostStavke.vrednost, vrednostStavke.cena, vrednostStavke.id));
+        });
+      } else if (stavka.naziv === 'iznos_do') {
+        stavka.vrednosti.forEach(function (vrednostStavke) {
+          controliznos.push(self.dodajInput(vrednostStavke.vrednost, vrednostStavke.cena, vrednostStavke.id));
+        });
+      }
+    });
+  }
+
+  dodajInput(naziv, cena, id): FormGroup {
+    return this.formBuilder.group({
+      'naziv': new FormControl(naziv),
+      'cena': new FormControl(cena),
+      'id': new FormControl(id)
+    });
   }
 
   promeniBoju(el) {
     $(el.srcElement).css('background-color', '#E0EFDE');
     console.log(el);
-  }
-
-  dodajInput(naziv, cena): FormGroup {
-    return this.formBuilder.group({
-      'naziv': new FormControl(naziv),
-      'cena': new FormControl(cena)
-  });
-  }
-
-  ucitajRegione() {
-    const controlRegion: FormArray = this.putnoOsiguranjeForm.get('Region') as FormArray;
-    const niz = [
-      {
-        naziv: 'Afrika',
-        cena: 50
-      },
-      {
-        naziv: 'Evropa',
-        cena: 100
-      },
-      {
-        naziv: 'Aazija',
-        cena: 150
-      }
-    ];
-    for (var i = 0; i < niz.length; i++) {
-      controlRegion.push(this.dodajInput(niz[i].naziv, niz[i].cena));
-    }
-  }
-  ucitajSportove() {
-    const controlSport: FormArray = this.putnoOsiguranjeForm.get('Sport') as FormArray;
-    const niz = [
-      {
-        naziv: 'Kosarka',
-        cena: 100
-      },
-      {
-        naziv: 'Tenis',
-        cena: 200
-      }
-    ];
-    for (var i = 0; i < niz.length; i++) {
-      controlSport.push(this.dodajInput(niz[i].naziv, niz[i].cena));
-    }
-  }
-  ucitajStarosti() {
-    const controlStarost: FormArray = this.putnoOsiguranjeForm.get('Starost') as FormArray;
-    const niz = [
-      {
-        naziv: 'Do 18',
-        cena: 50
-      },
-      {
-        naziv: '18-60',
-        cena: 110
-      }
-    ];
-    for (var i = 0; i < niz.length; i++) {
-      controlStarost.push(this.dodajInput(niz[i].naziv, niz[i].cena));
-    }
-  }
-  ucitajIznose() {
-    const controliznos: FormArray = this.putnoOsiguranjeForm.get('Iznos') as FormArray;
-    const niz = [
-      {
-        naziv: 'do 10000',
-        cena: 130
-      },
-      {
-        naziv: '10000-300000',
-        cena: 180
-      }
-    ];
-    for (var i = 0; i < niz.length; i++) {
-      controliznos.push(this.dodajInput(niz[i].naziv, niz[i].cena));
-    }
   }
 
   onSubmit() {

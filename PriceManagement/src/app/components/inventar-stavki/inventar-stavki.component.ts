@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import { InventarStavkiService } from '../../services/inventar-stavki.service';
 
 @Component({
   selector: 'app-inventar-stavki',
@@ -10,7 +11,7 @@ export class InventarStavkiComponent implements OnInit {
 
   inventarStavkiForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private inventarStavkiService: InventarStavkiService) { }
 
   ngOnInit() {
     this.inventarStavkiForm = new FormGroup({
@@ -55,5 +56,7 @@ export class InventarStavkiComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.inventarStavkiForm);
+    this.inventarStavkiService.posaljiNoveStavkeInventara(this.inventarStavkiForm.value)
+      .subscribe(response => console.log(response));
   }
 }

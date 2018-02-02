@@ -24,7 +24,9 @@ import { HomeComponent } from './components/home/home.component';
 import { CalendarModule } from 'primeng/components/calendar/calendar';
 import { LoginComponent } from './components/login/login.component';
 import { NapraviNalogComponent } from './components/napravi-nalog/napravi-nalog.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { InventarStavkiService } from './services/inventar-stavki.service';
+import { OsiguranjeService } from './services/osiguranje.service';
 
 
 @NgModule({
@@ -55,9 +57,10 @@ import { NapraviNalogComponent } from './components/napravi-nalog/napravi-nalog.
     AutoCompleteModule,
     SelectButtonModule,
     CheckboxModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ InventarStavkiService, OsiguranjeService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

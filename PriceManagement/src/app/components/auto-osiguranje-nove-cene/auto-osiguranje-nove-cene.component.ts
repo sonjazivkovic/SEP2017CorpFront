@@ -8,23 +8,23 @@ import {Form, FormArray, FormBuilder, FormControl, FormGroup} from '@angular/for
 })
 export class AutoOsiguranjeNoveCeneComponent implements OnInit {
 
-  autoOsiguranjeForm: FormGroup;
+  public autoOsiguranjeForm: FormGroup;
 
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.autoOsiguranjeForm = new FormGroup({
-      Paket: this.formBuilder.array([]),
-      'datum': new FormControl(null)
+      AutoPaket: this.formBuilder.array([])
     });
     this.dodajTestPodatke();
   }
 
-  dodajInput(naziv, cena): FormGroup {
+  dodajInput(naziv, cena, id): FormGroup {
     return this.formBuilder.group({
       'naziv': new FormControl(naziv),
-      'cena': new FormControl(cena)
+      'cena': new FormControl(cena),
+      'id': new FormControl(id)
     });
   }
 
@@ -34,10 +34,10 @@ export class AutoOsiguranjeNoveCeneComponent implements OnInit {
   }
 
   dodajTestPodatke() {
-    const paket = [ { naziv: 'Slepovanje do odr km', cena: 200 }, { naziv: 'Popravka do odr cene', cena: 150 }, { naziv: 'Smestaj u hotelu', cena: 110} ];
-    const controlPaket: FormArray = this.autoOsiguranjeForm.get('Paket') as FormArray;
+    const paket = [ { naziv: 'Slepovanje do odr km', cena: 200, id: 1 }, { naziv: 'Popravka do odr cene', cena: 150, id: 2 }, { naziv: 'Smestaj u hotelu', cena: 110, id: 3} ];
+    const controlPaket: FormArray = this.autoOsiguranjeForm.get('AutoPaket') as FormArray;
     for (var i = 0; i < paket.length; i++) {
-      controlPaket.push(this.dodajInput(paket[i].naziv, paket[i].cena));
+     controlPaket.push(this.dodajInput(paket[i].naziv, paket[i].cena, paket[i].id));
     }
   }
 

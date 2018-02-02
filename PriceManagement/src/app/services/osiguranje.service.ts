@@ -3,15 +3,16 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator//map';
 import 'rxjs/Rx';
-import {map} from "rxjs/operator/map";
 
 @Injectable()
-export class InventarStavkiService {
+export class OsiguranjeService {
 
   constructor(private http: HttpClient) { }
 
-  posaljiNoveStavkeInventara(data): Observable<any> {
-    return this.http.post('http://localhost:8060/pm/dodajNovuVrednostStavkeOsiguranja',
+  readonly path = 'http://localhost:8060/pm/getAllStavkaOsiguranjaWithPriceById/';
+
+  posaljiNoveCeneOsiguranja(data): Observable<any> {
+    return this.http.post('http://localhost:8060/pm/dodajNoviCenovnik',
       JSON.stringify(data),
       {
         headers: new HttpHeaders()
@@ -19,4 +20,8 @@ export class InventarStavkiService {
       }).map((response: Response) => response);
   }
 
+  getAllStavkaOsiguranjaById(id: string) {
+    return this.http.get(this.path + id)
+      .map((response: Response) => response);
+  }
 }
